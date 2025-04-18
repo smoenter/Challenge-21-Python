@@ -86,7 +86,7 @@ def place_order(menu):
             ordering = False 
   
     # TODO: Return the order list and the order total
-        return order, order_total
+    return order, order_total
 
 def update_order(order, menu_selection, menu_items):
     """
