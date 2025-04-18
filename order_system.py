@@ -32,7 +32,7 @@ def place_order(menu):
     while ordering:
     
         # TODO: Ask the customer what they want to order
-        print("\nWhat would you like to order?")
+        print("What would you like to order? ")
 
         # Create a variable for the menu item number
         i = 1
@@ -55,7 +55,7 @@ def place_order(menu):
                 i += 1
 
         # TODO: Ask customer to input menu item number
-        menu_selection = input("Please enter the number of the item you would like to order: ")
+        menu_selection = input("Type menu number: ")
 
         # TODO: Update the order list using the update_order function
         # TODO: Send the order list, menu selection, and menu items as arguments
@@ -63,14 +63,14 @@ def place_order(menu):
 
         # TODO: Ask the customer if they would like to order anything else
         # TODO: Let the customer know if they should type 'n' or 'N' to quit
-        continue_order = input("Would you like to order anything else? (Type 'n' or 'N' to finish): ")
+        continue_order = input("Would you like to keep ordering? (N) to quit: ")
 
         # TODO: Write a conditional statement that checks the user's input
         # TODO: The conditional statement should check for 'n' or 'N'
         if continue_order.lower() == 'n':
             
             # TODO: Write a print statement that thanks the customer for their order
-            print("\nThank you for your order!")
+            print("Thank you for your order.")
 
             # TODO: Use list comprehension to create a list called prices_list,
             # TODO: which contains the total prices for each item in the order list:
@@ -107,24 +107,23 @@ def update_order(order, menu_selection, menu_items):
     if menu_selection.isdigit():
 
         # TODO: Convert the menu selection to an integer
-        selection = int(menu_selection)
+        menu_selection = int(menu_selection)
 
 
         # TODO: Check if the menu selection is in the menu items keys
-        if selection in menu_items:
+        if menu_selection in menu_items:
             # TODO: Store the item name as a variable
-            item_name = menu_items[selection]["Item name"]
-            price = menu_items[selection]["Price"]
+            item_name = menu_items[menu_selection]["Item name"]
+            price = menu_items[menu_selection]["Price"]
 
             # TODO: Ask the customer for the quantity of the menu item
             # TODO: Use the item name variable in the question
-            quantity_input = input(f"How many '{item_name}' would you like? ")
+            quantity = input(f"What quantity of {item_name} would you like? \n(This will default to 1 if number is not entered)\n")
 
             # TODO: Check if the quantity is a number, default to 1 if not
-            if quantity_input.isdigit():
-                quantity = int(quantity_input)
+            if quantity.isdigit():
+                quantity = int(quantity)
             else:
-                print("Invalid quantity. Defaulting to 1.")
                 quantity = 1
 
 
@@ -140,12 +139,13 @@ def update_order(order, menu_selection, menu_items):
         else:
         # TODO: When the user's input isn't valid, 
         # TODO: tell the customer that their input isn't valid
-            print(f"'{menu_selection}' is not a valid menu item number.")
+            print(f"{menu_selection} was not a menu option.")
+
     # TODO: When the menu selection wasn't valid:
     # TODO: Print the menu selection and 
     # TODO: Tell the customer they didn't select a menu option
     else:
-        print(f"'{menu_selection}' is not a number. Please try again.")
+        print(f"{menu_selection} was not a menu option.")
 
     # TODO: Return the updated order
     return order
